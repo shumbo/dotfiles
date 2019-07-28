@@ -20,6 +20,9 @@ console_debug "Scrolling"
 # disable “natural” scrolling
 sudo defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
+console_debug "Three Finger Drag"
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.threeFingerSwipeGesture -int 1
+
 console_debug "Finder"
 
 # finder: show all filename extensions
