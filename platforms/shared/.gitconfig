@@ -1,0 +1,44 @@
+[core]
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+  editor = vim
+
+[diff]
+  tool = default-difftool
+
+[difftool "default-difftool"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+  tool = default-difftool
+
+[url "git@github.com:"]
+  insteadOf = "https://github.com/"
+
+[url "git@github.com:"]
+  pushInsteadOf = "git://github.com/"
+  pushInsteadOf = "https://github.com/"
+
+[help]
+  # Automatically correct and execute mistyped commands
+  autocorrect = 1
+
+[merge]
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+
+[push]
+	default = current
+
+[user]
+  name = Shun Kashiwa
+  email = shunthedev@gmail.com
+
+[github]
+	user = shumbo
+
+[http]
+	cookiefile = ~/.gitcookies
+
+[credential]
+	helper = store --file ~/.git-credentials
