@@ -41,5 +41,6 @@
     },
     "[c]": {
         "editor.defaultFormatter": "ms-vscode.cpptools"
-    }
+    },
+    "workbench.colorTheme": "Iceberg"
 }
