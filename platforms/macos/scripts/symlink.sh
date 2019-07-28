@@ -28,9 +28,19 @@ echo "=> Symlink Vim Configuration"
 ln -sf ${SHARED_DIR}/.vimrc ${HOME_DIR}/.vimrc
 
 # fish configuration
-echo "=> Symlink Fish Configuration"
-sudo ln -Fsv ${PLATFORM_DIR}/fish ${FISH_DIR}
-fisher # restore fisher plugins
+if [ ! -d "$FISH_DIR" ]; then
+  echo "=> Ensure Fish Directories Exist"
+  mkdir -p ${FISH_DIR}
+  echo "=> Symlink Fish Configuration"
+  ln -sf ${PLATFORM_DIR}/fish/config.fish ${FISH_DIR}/config.fish
+  ln -sf ${PLATFORM_DIR}/fish/aliases.fish ${FISH_DIR}/aliases.fish
+  ln -sf ${SHARED_DIR}/fish/fishfile ${FISH_DIR}/fishfile
+  sudo ln -sf ${SHARED_DIR}/fish/functions ${FISH_DIR}/functions
+  sudo ln -sf ${SHARED_DIR}/fish/conf.d ${FISH_DIR}/conf.d
+  sudo ln -sf ${SHARED_DIR}/fish/completions ${FISH_DIR}/completions
+else
+  echo "=> Skipping Fish Configuration as ~/.config/fish exists"
+fi
 
 # visual studio code
 echo "=> Symlink Visual Studio Configuration"

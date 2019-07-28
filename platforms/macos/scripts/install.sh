@@ -4,11 +4,7 @@ HOME_DIR=$1
 PLATFORM_DIR=$(pwd)
 SHARED_DIR=${PLATFORM_DIR}/../shared
 
-mkdir -p /usr/local/bin
-mkdir -p /usr/local/sbin
-
-chown -R $USER /usr/local/bin
-chown -R $USER /usr/local/sbin
+touch ${HOME_DIR}/.bash_profile
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -28,13 +24,16 @@ brew install \
   tree \
   openssl \
   httpie \
-  wget --enable-iri
+  wget
 
 # node
-brew install n
-n lts
-npm install -g npm
-brew install yarn --ignore-dependencies
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install --lts
+nvm use --lts
+brew install yarn
 
 # TODO: install more languages
 
@@ -50,7 +49,7 @@ brew cask install \
   bartender \
   google-japanese-ime
 
-brew update && brew cleanup && brew cleanup && brew prune
+brew update && brew cleanup && brew cleanup
 
 # install code extensions
 code --install-extension Angular.ng-template
