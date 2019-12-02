@@ -26,6 +26,7 @@ ln -sf ${SHARED_DIR}/.gitmodules ${HOME_DIR}/.gitmodules
 # vim config
 echo "=> Symlink Vim Configuration"
 ln -sf ${SHARED_DIR}/.vimrc ${HOME_DIR}/.vimrc
+ln -sf ${SHARED_DIR}/.vim ${HOME_DIR}/.vim
 
 # fish configuration
 if [ ! -d "$FISH_DIR" ]; then
