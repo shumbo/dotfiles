@@ -42,5 +42,9 @@
     "[c]": {
         "editor.defaultFormatter": "ms-vscode.cpptools"
     },
-    "workbench.colorTheme": "Iceberg"
+    "workbench.colorTheme": "Iceberg",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

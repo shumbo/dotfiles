@@ -31,8 +31,8 @@
 	default = current
 
 [user]
-  name = Shun Kashiwa
-  email = shunthedev@gmail.com
+	name = Shun Kashiwa
+	email = shunthedev@gmail.com
 
 [github]
 	user = shumbo
