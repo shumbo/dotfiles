@@ -46,5 +46,8 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "languageServerHaskell.hieExecutablePath": "/Users/shun/.local/bin/hie",
+    "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true
 }
