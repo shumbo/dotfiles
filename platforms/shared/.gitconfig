@@ -12,13 +12,6 @@
 [merge]
   tool = default-difftool
 
-[url "git@github.com:"]
-  insteadOf = "https://github.com/"
-
-[url "git@github.com:"]
-  pushInsteadOf = "git://github.com/"
-  pushInsteadOf = "https://github.com/"
-
 [help]
   # Automatically correct and execute mistyped commands
   autocorrect = 1
