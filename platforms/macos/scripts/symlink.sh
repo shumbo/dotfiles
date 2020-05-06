@@ -28,6 +28,11 @@ echo "=> Symlink Vim Configuration"
 ln -sf ${SHARED_DIR}/.vimrc ${HOME_DIR}/.vimrc
 ln -sf ${SHARED_DIR}/.vim ${HOME_DIR}/.vim
 
+# vim config
+echo "=> Symlink Vim Configuration"
+ln -sf ${SHARED_DIR}/.vimrc ${HOME_DIR}/.vimrc
+ln -sf ${SHARED_DIR}/.vim ${HOME_DIR}/.vim
+
 # fish configuration
 if [ ! -d "$FISH_DIR" ]; then
   echo "=> Ensure Fish Directories Exist"
@@ -42,6 +47,10 @@ if [ ! -d "$FISH_DIR" ]; then
 else
   echo "=> Skipping Fish Configuration as ~/.config/fish exists"
 fi
+
+# fish-nvm
+echo "=> Symlink fish-nvm Configuration"
+ln -sf ${SHARED_DIR}/.nvmrc ${HOME_DIR}/.nvmrc
 
 # visual studio code
 echo "=> Symlink Visual Studio Configuration"
