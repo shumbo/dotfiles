@@ -49,5 +49,10 @@
     },
     "languageServerHaskell.hieExecutablePath": "/Users/shun/.local/bin/hie",
     "editor.fontFamily": "'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "window.zoomLevel": 0,
+    "[python]": {
+        "editor.tabSize": 4
+    },
+    "terminal.integrated.fontFamily": "'Source Code Pro for Powerline', 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace"
 }

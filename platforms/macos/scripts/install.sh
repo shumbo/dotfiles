@@ -24,7 +24,8 @@ brew install \
   tree \
   openssl \
   httpie \
-  wget
+  wget \
+  starship
 
 # TODO: install more languages
 
