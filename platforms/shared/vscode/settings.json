@@ -54,7 +54,7 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-"editor.defaultFormatter": "esbenp.prettier-vscode",
 "python.languageServer": "Pylance",
-"javascript.updateImportsOnFileMove.enabled": "always"
+"javascript.updateImportsOnFileMove.enabled": "always",
+"editor.formatOnSave": true
 }
