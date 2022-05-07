@@ -1,9 +1,12 @@
+# taps
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+
+# brew
 brew "pkg-config"
 brew "gnutls"
 brew "libpng"
@@ -26,3 +29,12 @@ brew "tldr"
 brew "vim"
 brew "volta"
 brew "wget"
+brew "starship"
+
+# cask
+cask "visual-studio-code"
+cask "alfred"
+cask "google-chrome"
+cask "slack"
+cask "bartender"
+cask "google-japanese-ime"
