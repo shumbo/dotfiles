@@ -1,0 +1,15 @@
+{{ if eq .chezmoi.os "linux" -}}
+
+#!/bin/sh
+sudo apt install vim git wget curl fish ghq peco direnv volta
+
+{{ else if eq .chezmoi.os "darwin" -}}
+
+#!/bin/sh
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew update
+cd $HOME
+brew bundle
+
+{{ end -}}
