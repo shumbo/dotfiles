@@ -16,6 +16,7 @@ import subprocess
 import sys
 import traceback
 
+
 BASH = 'bash'
 
 FISH_READONLY = [
@@ -23,8 +24,9 @@ FISH_READONLY = [
     'FISH_VERSION', 'fish_pid', 'hostname', '_', 'fish_private_mode'
 ]
 
-IGNORED = ['PS1', 'XPC_SERVICE_NAME']
-
+IGNORED = [
+ 'PS1', 'XPC_SERVICE_NAME'
+]
 
 def ignored(name):
     if name == 'PWD':  # this is read only, but has special handling
@@ -36,33 +38,31 @@ def ignored(name):
         return True
     return False
 
-
 def escape(string):
     # use json.dumps to reliably escape quotes and backslashes
     return json.dumps(string).replace(r'$', r'\$')
 
-
 def escape_identifier(word):
     return escape(word.replace('?', '\\?'))
-
 
 def comment(string):
     return '\n'.join(['# ' + line for line in string.split('\n')])
 
-
 def gen_script():
     # Use the following instead of /usr/bin/env to read environment so we can
     # deal with multi-line environment variables (and other odd cases).
-    env_reader = "%s -c 'import os,json; print(json.dumps({k:v for k,v in os.environ.items()}))'" % (
-        sys.executable)
+    env_reader = "%s -c 'import os,json; print(json.dumps({k:v for k,v in os.environ.items()}))'" % (sys.executable)
     args = [BASH, '-c', env_reader]
     output = subprocess.check_output(args, universal_newlines=True)
     old_env = output.strip()
 
     pipe_r, pipe_w = os.pipe()
     if sys.version_info >= (3, 4):
-        os.set_inheritable(pipe_w, True)
-    command = 'eval $1 && ({}; alias) >&{}'.format(env_reader, pipe_w)
+      os.set_inheritable(pipe_w, True)
+    command = 'eval $1 && ({}; alias) >&{}'.format(
+        env_reader,
+        pipe_w
+    )
     args = [BASH, '-c', command, 'bass', ' '.join(sys.argv[1:])]
     p = subprocess.Popen(args, universal_newlines=True, close_fds=False)
     os.close(pipe_w)
@@ -70,9 +70,11 @@ def gen_script():
         new_env = f.readline()
         alias_str = f.read()
     if p.wait() != 0:
-        raise subprocess.CalledProcessError(returncode=p.returncode,
-                                            cmd=' '.join(sys.argv[1:]),
-                                            output=new_env + alias_str)
+        raise subprocess.CalledProcessError(
+            returncode=p.returncode,
+            cmd=' '.join(sys.argv[1:]),
+            output=new_env + alias_str
+        )
     new_env = new_env.strip()
 
     old_env = json.loads(old_env)
@@ -95,7 +97,8 @@ def gen_script():
         else:
             continue
         if k == 'PATH':
-            value = ' '.join([escape(directory) for directory in v.split(':')])
+            value = ' '.join([escape(directory)
+                              for directory in v.split(':')])
         else:
             value = escape(v)
         script_lines.append('set -g -x %s %s' % (k, value))
@@ -115,7 +118,6 @@ def gen_script():
 
     return script + '\n' + alias
 
-
 script_file = os.fdopen(3, 'w')
 
 if not sys.argv[1:]:
@@ -128,7 +130,7 @@ except subprocess.CalledProcessError as e:
     sys.exit(e.returncode)
 except Exception:
     print('Bass internal error!', file=sys.stderr)
-    raise  # traceback will output to stderr
+    raise # traceback will output to stderr
 except KeyboardInterrupt:
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     os.kill(os.getpid(), signal.SIGINT)
