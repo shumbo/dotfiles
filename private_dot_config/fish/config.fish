@@ -59,16 +59,8 @@ if type -q rbenv
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-set -g fish_user_paths "/opt/homebrew/opt/krb5/bin" $fish_user_paths
-set -g fish_user_paths "/opt/homebrew/opt/krb5/sbin" $fish_user_paths
-set -g fish_user_paths "/opt/homebrew/opt/libpq/bin" $fish_user_paths
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
-
-# Puppeteer
-export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-export PUPPETEER_EXECUTABLE_PATH=(which chromium)
-
 
 # tabtab source for packages
 # uninstall by removing these lines
