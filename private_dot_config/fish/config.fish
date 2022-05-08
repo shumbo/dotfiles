@@ -1,3 +1,5 @@
+set -U fish_greeting ""
+
 set -x PATH $HOME/.fastlane/bin $PATH
 set -x PATH /Users/shun/.cargo/bin $PATH
 set -x PATH /Users/shun/.ghcup/bin $PATH

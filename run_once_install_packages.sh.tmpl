@@ -1,7 +1,10 @@
 {{ if eq .chezmoi.os "linux" -}}
 
 #!/bin/sh
-sudo apt install vim git wget curl fish ghq peco direnv volta
+sudo apt install -y vim git wget curl fish direnv peco
+sudo snap install go --classic
+snap install starship
+go install github.com/x-motemen/ghq@latest
 
 {{ else if eq .chezmoi.os "darwin" -}}
 
