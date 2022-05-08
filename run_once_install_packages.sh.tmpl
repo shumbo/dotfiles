@@ -1,6 +1,7 @@
 {{ if eq .chezmoi.os "linux" -}}
 
 #!/bin/sh
+sudo apt update
 sudo apt install -y vim git wget curl fish direnv peco
 sudo snap install go --classic
 snap install starship
