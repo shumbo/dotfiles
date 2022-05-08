@@ -46,8 +46,9 @@ if type -q go
   set -x PATH $PATH (go env GOPATH)/bin
 end
 
-export CLOUDSDK_PYTHON=python3
-source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+if test -e /opt/homebrew/Caskroom/google-cloud-sdk
+  source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+end
 
 # keybind
 function fish_user_key_bindings
