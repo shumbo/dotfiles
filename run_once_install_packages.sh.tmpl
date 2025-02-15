@@ -26,10 +26,10 @@ brew bundle
 if ! grep -Fxq "/usr/local/bin/fish" /etc/shells; then
   echo "Adding fish to /etc/shells..."
   echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
-  if [ "$SHELL" != "/opt/homebrew/bin/fish" ]; then
-    echo "Setting fish as default shell..."
-    chsh -s /usr/local/bin/fish
-  fi
+fi
+if [ "$SHELL" != "/opt/homebrew/bin/fish" ]; then
+  echo "Setting fish as default shell..."
+  chsh -s /usr/local/bin/fish
 fi
 
 
