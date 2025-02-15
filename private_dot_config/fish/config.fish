@@ -11,6 +11,7 @@ set -x PATH /opt/homebrew/bin $PATH
 if type -q volta
   set -gx VOLTA_HOME "$HOME/.volta"
   set -gx PATH "$VOLTA_HOME/bin" $PATH
+  set VOLTA_FEATURE_PNPM 1
 end
 
 # Haskell
@@ -19,9 +20,18 @@ if test -e $HOME/.ghcup/bin
 end
 
 # Python
-if type -q rye
-  set -x PATH $HOME/.rye/shims $PATH
-end
+#if type -q pyenv
+  # Add pyenv executable to PATH by running
+  # the following interactively:
+
+  #  set -Ux PYENV_ROOT $HOME/.pyenv
+  #set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+
+  # Load pyenv automatically by appending
+  # the following to ~/.config/fish/config.fish:
+
+  #pyenv init - | source
+  #end
 
 # Go
 if type -q go
@@ -65,3 +75,6 @@ end
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 export GPG_TTY=$(tty)
+
+# uv
+fish_add_path "/Users/shun/.local/bin"
